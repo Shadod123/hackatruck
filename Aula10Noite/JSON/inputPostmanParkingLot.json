@@ -1,0 +1,25 @@
+{
+  "nomeEstacionamento": "A",
+  "endereco": "B",
+  "vagas": 1,
+  "carros": [
+    {
+      "modelo": "C",
+      "ano": 2000,
+      "cor": "D",
+      "preco": 10.0
+    },
+    {
+      "modelo": "AB",
+      "ano": 2001,
+      "cor": "DA",
+      "preco": 100.0
+    },
+    {
+      "modelo": "ABC",
+      "ano": 2005,
+      "cor": "DAD",
+      "preco": 105.2
+    }
+  ]
+}

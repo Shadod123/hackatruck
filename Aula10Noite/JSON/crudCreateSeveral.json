@@ -1,0 +1,99 @@
+[
+    {
+        "id": "f0bc851eda39b9f4",
+        "type": "tab",
+        "label": "Caio Varios Itens",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7e5ceafbbf38444c",
+        "type": "http in",
+        "z": "f0bc851eda39b9f4",
+        "name": "",
+        "url": "/saveseveralcera",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "559d80737233a3e1"
+            ]
+        ]
+    },
+    {
+        "id": "412a19c9afaf8f17",
+        "type": "http response",
+        "z": "f0bc851eda39b9f4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a1f956760855da7e",
+        "type": "cloudantplus out",
+        "z": "f0bc851eda39b9f4",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caiocrudtest",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 570,
+        "y": 160,
+        "wires": [
+            [
+                "412a19c9afaf8f17",
+                "e5c9e9482fa38bc9"
+            ]
+        ]
+    },
+    {
+        "id": "e5c9e9482fa38bc9",
+        "type": "debug",
+        "z": "f0bc851eda39b9f4",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "559d80737233a3e1",
+        "type": "split",
+        "z": "f0bc851eda39b9f4",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "a1f956760855da7e"
+            ]
+        ]
+    },
+    {
+        "id": "c6979f71bb34db13",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-1oyyl44w0ka2aw9z3fvb53wag6o79wi8boxf0xsbnpr:6c078caec78a17bbd953a16fff300224@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "",
+        "useapikey": true
+    }
+]

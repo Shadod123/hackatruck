@@ -1,0 +1,145 @@
+[
+    {
+        "id": "ba79dfca2b1bfaf6",
+        "type": "tab",
+        "label": "Caio Estacionamento",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6887745835aa365b",
+        "type": "http in",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "",
+        "url": "/savepostparkinglotcera",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "22441000f60e6121"
+            ]
+        ]
+    },
+    {
+        "id": "14f447bcadc303f6",
+        "type": "http response",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "22441000f60e6121",
+        "type": "cloudantplus out",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caioparkinglot",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "14f447bcadc303f6",
+                "2e2a047b3411401b"
+            ]
+        ]
+    },
+    {
+        "id": "2e2a047b3411401b",
+        "type": "debug",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2e74f6c55d7aa60d",
+        "type": "cloudantplus in",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caioparkinglot",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 440,
+        "y": 480,
+        "wires": [
+            [
+                "3802c18646c48394",
+                "1443e0b025ec82d4"
+            ]
+        ]
+    },
+    {
+        "id": "09e59c8ee2d3c683",
+        "type": "http in",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "",
+        "url": "/retrieveparkinglotcera",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 400,
+        "wires": [
+            [
+                "2e74f6c55d7aa60d"
+            ]
+        ]
+    },
+    {
+        "id": "3802c18646c48394",
+        "type": "http response",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "1443e0b025ec82d4",
+        "type": "debug",
+        "z": "ba79dfca2b1bfaf6",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "c6979f71bb34db13",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-1oyyl44w0ka2aw9z3fvb53wag6o79wi8boxf0xsbnpr:6c078caec78a17bbd953a16fff300224@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "",
+        "useapikey": true
+    }
+]

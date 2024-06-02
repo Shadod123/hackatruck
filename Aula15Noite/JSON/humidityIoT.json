@@ -1,0 +1,193 @@
+[
+    {
+        "id": "908a96fc51564286",
+        "type": "tab",
+        "label": "HackaTruck_IoT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "235d6ef7d7316d8c",
+        "type": "ibmiot in",
+        "z": "908a96fc51564286",
+        "authentication": "apiKey",
+        "apiKey": "7552289511b87880",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "humidade_pucbh",
+        "applicationId": "",
+        "deviceType": "+",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "241bc5162d426344"
+            ]
+        ]
+    },
+    {
+        "id": "7ec5de85bb1aea01",
+        "type": "debug",
+        "z": "908a96fc51564286",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.d",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "2683fcedf544d185",
+        "type": "cloudantplus out",
+        "z": "908a96fc51564286",
+        "name": "",
+        "cloudant": "73f4677142067d79",
+        "database": "caiohumidityiot",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 640,
+        "y": 80,
+        "wires": [
+            [
+                "7ec5de85bb1aea01"
+            ]
+        ]
+    },
+    {
+        "id": "45df09d292409055",
+        "type": "delay",
+        "z": "908a96fc51564286",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 440,
+        "y": 80,
+        "wires": [
+            [
+                "2683fcedf544d185"
+            ]
+        ]
+    },
+    {
+        "id": "241bc5162d426344",
+        "type": "function",
+        "z": "908a96fc51564286",
+        "name": "function 1",
+        "func": "msg.payload = msg.payload.d\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 80,
+        "wires": [
+            [
+                "45df09d292409055"
+            ]
+        ]
+    },
+    {
+        "id": "5008d0fe7799ad61",
+        "type": "http in",
+        "z": "908a96fc51564286",
+        "name": "",
+        "url": "/retrievehumiditycera",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "0bf916194755da6f"
+            ]
+        ]
+    },
+    {
+        "id": "7d2fa9641a81ca10",
+        "type": "http response",
+        "z": "908a96fc51564286",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "0bf916194755da6f",
+        "type": "cloudantplus in",
+        "z": "908a96fc51564286",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caiohumidityiot",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 640,
+        "y": 180,
+        "wires": [
+            [
+                "7d2fa9641a81ca10"
+            ]
+        ]
+    },
+    {
+        "id": "7552289511b87880",
+        "type": "ibmiot",
+        "name": "IoTNoite",
+        "keepalive": "60",
+        "serverName": "8l0rkn.messaging.internetofthings.ibmcloud.com",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "73f4677142067d79",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-xqmwqcwxzw39a34csad7x4mhe9k08798uohg4ihq9o7:40f8a5b2dea8e8dd04aee009c2247092@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "humidityiot",
+        "useapikey": true
+    },
+    {
+        "id": "c6979f71bb34db13",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-xqmwqcwxzw39a34csad7x4mhe9k08798uohg4ihq9o7:40f8a5b2dea8e8dd04aee009c2247092@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "",
+        "useapikey": true
+    }
+]

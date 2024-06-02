@@ -1,0 +1,334 @@
+[
+    {
+        "id": "7ff290e650f9cdcc",
+        "type": "tab",
+        "label": "Caio CRUD",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "30ed24bd92698f8d",
+        "type": "http in",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "url": "/savecera",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "c0a8449308d2f509"
+            ]
+        ]
+    },
+    {
+        "id": "e5f2aa14904a3b2c",
+        "type": "http response",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c0a8449308d2f509",
+        "type": "cloudantplus out",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caiocrudtest",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "e5f2aa14904a3b2c",
+                "0210b16b6f3b72e1"
+            ]
+        ]
+    },
+    {
+        "id": "0210b16b6f3b72e1",
+        "type": "debug",
+        "z": "7ff290e650f9cdcc",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "adaaeaf30ea22b79",
+        "type": "http in",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "url": "/savecerapost",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "2a342989bc5198ab"
+            ]
+        ]
+    },
+    {
+        "id": "ca91349aa5c7252d",
+        "type": "http response",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2a342989bc5198ab",
+        "type": "cloudantplus out",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caiocrudtest",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "ca91349aa5c7252d",
+                "0e5acfe9ad6a852e"
+            ]
+        ]
+    },
+    {
+        "id": "0e5acfe9ad6a852e",
+        "type": "debug",
+        "z": "7ff290e650f9cdcc",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "0b5c97cb9bbb1129",
+        "type": "cloudantplus in",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caiocrudtest",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 350,
+        "y": 740,
+        "wires": [
+            [
+                "5082b5c217c86bc1",
+                "6c20bce34bc8f434"
+            ]
+        ]
+    },
+    {
+        "id": "96d143fd16c4c24b",
+        "type": "http in",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "url": "/retrievecera",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 660,
+        "wires": [
+            [
+                "0b5c97cb9bbb1129"
+            ]
+        ]
+    },
+    {
+        "id": "5082b5c217c86bc1",
+        "type": "http response",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "6c20bce34bc8f434",
+        "type": "debug",
+        "z": "7ff290e650f9cdcc",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "b1f623ffb995502e",
+        "type": "http in",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "url": "/updatecera",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 980,
+        "wires": [
+            [
+                "a5d2abbc8af848cb"
+            ]
+        ]
+    },
+    {
+        "id": "3cc07e818958ec80",
+        "type": "http response",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "a5d2abbc8af848cb",
+        "type": "cloudantplus out",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caiocrudtest",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 350,
+        "y": 1060,
+        "wires": [
+            [
+                "3cc07e818958ec80",
+                "7002035317fd5345"
+            ]
+        ]
+    },
+    {
+        "id": "7002035317fd5345",
+        "type": "debug",
+        "z": "7ff290e650f9cdcc",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "02d98533b751991a",
+        "type": "http in",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "url": "/removecera",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1300,
+        "wires": [
+            [
+                "61f34164b19d1ec6"
+            ]
+        ]
+    },
+    {
+        "id": "7edc11008189ca7f",
+        "type": "http response",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "61f34164b19d1ec6",
+        "type": "cloudantplus out",
+        "z": "7ff290e650f9cdcc",
+        "name": "",
+        "cloudant": "c6979f71bb34db13",
+        "database": "caiocrudtest",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "delete",
+        "x": 350,
+        "y": 1380,
+        "wires": [
+            [
+                "7edc11008189ca7f",
+                "2a76720e6052622f"
+            ]
+        ]
+    },
+    {
+        "id": "2a76720e6052622f",
+        "type": "debug",
+        "z": "7ff290e650f9cdcc",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "c6979f71bb34db13",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-1oyyl44w0ka2aw9z3fvb53wag6o79wi8boxf0xsbnpr:6c078caec78a17bbd953a16fff300224@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "",
+        "useapikey": true
+    }
+]
